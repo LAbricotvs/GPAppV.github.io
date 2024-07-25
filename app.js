@@ -256,7 +256,7 @@ if (description.includes("dernières dates de service entretien")) {
     photoInput.setAttribute('type', 'file');
     photoInput.setAttribute('accept', 'image/*');
     photoInput.setAttribute('capture', 'environment');
-    photoInput.setAttribute('multiple', true); // Permettre la sélection de plusieurs fichiers
+    photoInput.setAttribute('multiple', 'multiple'); // Permettre la sélection de plusieurs fichiers
     photoInput.addEventListener('change', (event) => handlePhotoUpload(event, controlItem));
 
     controlItem.appendChild(commentTextarea);
@@ -323,18 +323,26 @@ function autoResize(textarea) {
 }
 
 function handlePhotoUpload(event, controlItem) {
-    const files = event.target.files;
-    const existingPhotos = JSON.parse(controlItem.getAttribute('data-photos') || '[]');
-    
-    for (let file of files) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            existingPhotos.push({ data: e.target.result, width: 100, height: 100 });
-            controlItem.setAttribute('data-photos', JSON.stringify(existingPhotos));
-        };
-        reader.readAsDataURL(file);
-    }
-}
+            const files = event.target.files; // Récupère la liste des fichiers sélectionnés
+
+            // Vérifiez s'il y a des fichiers sélectionnés
+            if (files.length > 0) {
+                // Itérez sur chaque fichier sélectionné
+                for (const file of files) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        // Créez un élément image pour chaque fichier et affichez-le
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.width = 200; // Ajustez la taille de l'image selon vos besoins
+                        controlItem.appendChild(img);
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
 
 function loadImage(src) {
     return new Promise((resolve, reject) => {
