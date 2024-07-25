@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste de Contrôles</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Liste de Contrôles</h1>
+        
+        <!-- Sélection du type de contrôle -->
+        <div id="form-type">
+            <label for="control-type" class="required">Type de contrôle:</label>
+            <select id="control-type" required>
+                <option value="">Sélectionner...</option>
+                <option value="expertise">Contrôle pour expertise</option>
+                <option value="reprise">Test de reprise</option>
+            </select>
+        </div>
+
+        <!-- Formulaire pour les informations supplémentaires -->
+        <div id="form-info">
+            <label for="order-number" class="required">N° d'ordre:</label>
+            <input type="text" id="order-number" required>
+            
+            <label for="chassis-number" class="required">N° Chassis:</label> <!-- Nouveau champ ajouté -->
+            <input type="text" id="chassis-number" required>
+
+            <label for="registration" class="required">Immatriculation:</label>
+            <input type="text" id="registration" required>
+            
+            <label for="mechanic" class="required">Mécanicien:</label>
+            <input type="text" id="mechanic" required>
+            
+            <label for="vehicle" class="required">Véhicule:</label>
+            <input type="text" id="vehicle" required>
+            
+            <label for="mileage" class="required">Kilomètres:</label>
+            <input type="number" id="mileage" required>
+            
+            <label for="date-time">Date et Heure du contrôle:</label>
+            <input type="text" id="date-time" readonly>
+        </div>
+        
+        <div id="controls-list">
+            <!-- Les contrôles seront ajoutés ici dynamiquement -->
+        </div>
+        <button id="generate-pdf">Générer PDF</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

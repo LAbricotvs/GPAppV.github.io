@@ -1,0 +1,86 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+#app {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#form-type, #form-info {
+    margin-bottom: 20px;
+}
+
+#form-type label, #form-info label {
+    display: block;
+    margin-top: 10px;
+}
+
+#form-type label.required::after, #form-info label.required::after {
+    content: '*';
+    color: red;
+    margin-left: 5px;
+}
+
+#form-type select, #form-info input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.control-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px; /* Ajout d'espace entre les items de contrôle */
+}
+
+.control-item span {
+    display: block;
+    margin-bottom: 10px; /* Espace entre l'intitulé et les boutons */
+}
+
+.control-item button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button.ok {
+    background-color: #4CAF50; /* Couleur verte pour OK */
+    color: white;
+}
+
+button.not-ok {
+    background-color: #f44336; /* Couleur rouge pour Non OK */
+    color: white;
+}
+
+button.not-equipped {
+    background-color: #FFC107; /* Couleur jaune pour Non équipé */
+    color: black;
+}
+
+button.selected {
+    border: 2px solid black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.control-item textarea {
+    display: block;
+    margin-top: 10px; /* Espace entre les boutons et la zone de commentaire */
+    margin-bottom: 10px; /* Espace entre la zone de commentaire et l'ajout d'image */
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    resize: none; /* Empêche le redimensionnement manuel */
+    min-height: 40px;
+    max-height: 200px; /* Hauteur maximale pour éviter des zones trop grandes */
+}
