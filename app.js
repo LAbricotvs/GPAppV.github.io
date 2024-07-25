@@ -255,6 +255,7 @@ if (description.includes("dernières dates de service entretien")) {
     const photoInput = document.createElement('input');
     photoInput.setAttribute('type', 'file');
     photoInput.setAttribute('accept', 'image/*');
+    photoInput.setAttribute('capture', 'environment');
     photoInput.setAttribute('multiple', true); // Permettre la sélection de plusieurs fichiers
     photoInput.addEventListener('change', (event) => handlePhotoUpload(event, controlItem));
 
