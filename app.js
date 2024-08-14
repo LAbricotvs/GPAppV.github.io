@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { description: "Contrôle des balais essuie-glaces et du lave-glace + lave-phares", allowNotEquipped: false },
         { description: "Contrôle éclairage et klaxon", allowNotEquipped: false },
         { description: "Contrôle des protections de pédales", allowNotEquipped: false },
-        { description: "Contrôle des ceintures de sécurité + sièges + caoutchouc pédale", allowNotEquipped: false },
+        { description: "Contrôle des ceintures de sécurité + sièges !! ATTENTION AU NOMBRE DE SIEGES !! + caoutchouc pédale", allowNotEquipped: false },
         { description: "Réglage des phares", allowNotEquipped: false },
         { description: "Contrôle géométrie au ripomètre, contrôle du blocage de direction (antivol)", allowNotEquipped: false },
         { description: "Contrôle du verrouillage centralisé, des télécommandes", allowNotEquipped: false },
