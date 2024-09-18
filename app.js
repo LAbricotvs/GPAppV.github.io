@@ -471,7 +471,6 @@ async function generatePDF() {
     const serviceDate = control.querySelector('.service-date').value;
     const mileage = control.querySelector('.mileage').value;
     const expertiseDate = control.querySelector('.expertise-date').value;
-    const checkboxes = document.querySelectorAll('.test-checkbox');
 
     doc.text(`Date du dernier service: ${serviceDate}`, margin, y);
     y += 5;
