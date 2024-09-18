@@ -480,14 +480,7 @@ async function generatePDF() {
     y += 5;
     doc.text(`Date de la dernière expertise: ${expertiseDate}`, margin, y);
     y += 5;
-    doc.text('Traveaux à réalisés:', margin, y);
-            y += 5;
-            tests.forEach((test, index) => {
-                doc.text(- ${test}, margin, y + (index * 5));
-            });
 
-            y += (tests.length * 5) + 5;
-        }
 }
 
 
