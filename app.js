@@ -439,15 +439,47 @@ async function generatePDF() {
         y += 5 + (commentLines.length * 8);
 
         // Gérer les dimensions des pneus et autres informations
-        if (description.includes('pneumatiques')) {
-            // Logique pour les dimensions des pneus
-            // (Gardez le code tel quel ou ajoutez d'autres modifications si nécessaire)
-        }
+       if (description.includes('pneumatiques')) {
+    const tireType = control.querySelector('.tire-type').value;
+    const tireWidth = control.querySelector('.tire-width').value;
+    const tireAspectRatio = control.querySelector('.tire-aspect-ratio').value;
+    const tireDiameter = control.querySelector('.tire-diameter').value;
+    const tireLoadIndex = control.querySelector('.tire-load-index').value;
+    const secondSetCheckbox = control.querySelector('.second-set-checkbox').checked;
 
-        if (description.includes('service')) {
-            // Logique pour les services et expertise
-            // (Gardez le code tel quel ou ajoutez d'autres modifications si nécessaire)
-        }
+    doc.text(`Type de pneus: ${tireType}`, margin, y);
+    y += 5;
+    doc.text(`Dimensions: ${tireWidth}/${tireAspectRatio} R${tireDiameter} ${tireLoadIndex}`, margin, y);
+    y += 5;
+
+    if (secondSetCheckbox) {
+        const tireType2 = control.querySelector('.tire-type2').value;
+        const tireWidth2 = control.querySelector('.tire-width2').value;
+        const tireAspectRatio2 = control.querySelector('.tire-aspect-ratio2').value;
+        const tireDiameter2 = control.querySelector('.tire-diameter2').value;
+        const tireLoadIndex2 = control.querySelector('.tire-load-index2').value;
+
+        doc.text(`2ème jeu de pneus: ${tireType2}`, margin, y);
+        y += 5;
+        doc.text(`Dimensions: ${tireWidth2}/${tireAspectRatio2} R${tireDiameter2} ${tireLoadIndex2}`, margin, y);
+        y += 5;
+    }
+}
+
+
+        if (description.includes('service entretien')) {
+    const serviceDate = control.querySelector('.service-date').value;
+    const mileage = control.querySelector('.mileage').value;
+    const expertiseDate = control.querySelector('.expertise-date').value;
+
+    doc.text(`Date du dernier service: ${serviceDate}`, margin, y);
+    y += 5;
+    doc.text(`Kilométrage du dernier service: ${mileage}`, margin, y);
+    y += 5;
+    doc.text(`Date de la dernière expertise: ${expertiseDate}`, margin, y);
+    y += 5;
+}
+
 
         for (let photo of photos) {
             if (photo.data) {
