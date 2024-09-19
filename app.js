@@ -484,7 +484,7 @@ async function generatePDF() {
 
             checkboxes.forEach((checkbox) => {
                 const testLabel = checkbox.parentElement.textContent.trim();
-                const isChecked = checkbox.checked ? '✔️' : '❌';
+                const isChecked = checkbox.checked ? 'Fait' : 'Pas fait';
                 doc.text(`${testLabel}: ${isChecked}`, margin, y);
                 y += 5;
             });
