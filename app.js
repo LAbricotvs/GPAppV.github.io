@@ -220,6 +220,11 @@ if (description.includes("dernières dates de service entretien")) {
     controlItem.appendChild(expertiseDateLabel);
     controlItem.appendChild(expertiseDateInput);
 
+     // Ajouter un texte juste avant les cases à cocher
+    const serviceTestsLabel = document.createElement('p');
+    serviceTestsLabel.textContent = 'Effectués au dernier service :';
+    controlItem.appendChild(serviceTestsLabel);
+
     // Ajouter les cases à cocher
     const testsGroup = document.createElement('div');
     testsGroup.classList.add('tests-group');
@@ -484,7 +489,7 @@ async function generatePDF() {
 
             checkboxes.forEach((checkbox) => {
                 const testLabel = checkbox.parentElement.textContent.trim();
-                const isChecked = checkbox.checked ? 'Fait' : 'Pas fait';
+                const isChecked = checkbox.checked ? 'Fait au dernier service' : 'Pas fait au dernier service';
                 doc.text(`${testLabel}: ${isChecked}`, margin, y);
                 y += 5;
             });
