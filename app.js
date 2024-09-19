@@ -223,8 +223,9 @@ if (description.includes("dernières dates de service entretien")) {
      // Ajouter un texte juste avant les cases à cocher
     const serviceTestsLabel = document.createElement('p');
     serviceTestsLabel.textContent = 'Effectués au dernier service :';
+    serviceTestsLabel.style.color = 'black'; // S'assurer qu'il est visible
     controlItem.appendChild(serviceTestsLabel);
-
+    
     // Ajouter les cases à cocher
     const testsGroup = document.createElement('div');
     testsGroup.classList.add('tests-group');
