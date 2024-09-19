@@ -467,20 +467,30 @@ async function generatePDF() {
 }
 
 
-        if (description.includes('service entretien')) {
-    const serviceDate = control.querySelector('.service-date').value;
-    const mileage = control.querySelector('.mileage').value;
-    const expertiseDate = control.querySelector('.expertise-date').value;
+        if (description.includes("dernières dates de service entretien")) {
+            const serviceDate = control.querySelector('.service-date').value;
+            const mileage = control.querySelector('.mileage').value;
+            const expertiseDate = control.querySelector('.expertise-date').value;
 
-    doc.text(`Date du dernier service: ${serviceDate}`, margin, y);
-    y += 5;
-    doc.text(`Kilométrage du dernier service: ${mileage}`, margin, y);
-    y += 5;
-    doc.text(`Date de la dernière expertise: ${expertiseDate}`, margin, y);
-    y += 5;
+            doc.text(`Date du dernier service: ${serviceDate}`, margin, y);
+            y += 5;
+            doc.text(`Kilomètres du dernier service: ${mileage}`, margin, y);
+            y += 5;
+            doc.text(`Date de la dernière expertise: ${expertiseDate}`, margin, y);
+            y += 5;
 
-}
+            // Récupérer l'état des cases à cocher et les ajouter au PDF
+            const testsGroup = control.querySelector('.tests-group');
+            const checkboxes = testsGroup.querySelectorAll('.test-checkbox');
 
+            checkboxes.forEach((checkbox, index) => {
+                const testLabel = checkbox.parentElement.textContent.trim();
+                const isChecked = checkbox.checked ? '✔️' : '❌';
+                doc.text(`${testLabel}: ${isChecked}`, margin, y);
+                y += 5;
+            });
+        }
+    }
 
         for (let photo of photos) {
             if (photo.data) {
