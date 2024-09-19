@@ -439,33 +439,32 @@ async function generatePDF() {
         y += 5 + (commentLines.length * 8);
 
         // Gérer les dimensions des pneus et autres informations
-       if (description.includes('pneumatiques')) {
-    const tireType = control.querySelector('.tire-type').value;
-    const tireWidth = control.querySelector('.tire-width').value;
-    const tireAspectRatio = control.querySelector('.tire-aspect-ratio').value;
-    const tireDiameter = control.querySelector('.tire-diameter').value;
-    const tireLoadIndex = control.querySelector('.tire-load-index').value;
-    const secondSetCheckbox = control.querySelector('.second-set-checkbox').checked;
+        if (description.includes('pneumatiques')) {
+            const tireType = control.querySelector('.tire-type').value;
+            const tireWidth = control.querySelector('.tire-width').value;
+            const tireAspectRatio = control.querySelector('.tire-aspect-ratio').value;
+            const tireDiameter = control.querySelector('.tire-diameter').value;
+            const tireLoadIndex = control.querySelector('.tire-load-index').value;
+            const secondSetCheckbox = control.querySelector('.second-set-checkbox').checked;
 
-    doc.text(`Type de pneus: ${tireType}`, margin, y);
-    y += 5;
-    doc.text(`Dimensions: ${tireWidth}/${tireAspectRatio} R${tireDiameter} ${tireLoadIndex}`, margin, y);
-    y += 5;
+            doc.text(`Type de pneus: ${tireType}`, margin, y);
+            y += 5;
+            doc.text(`Dimensions: ${tireWidth}/${tireAspectRatio} R${tireDiameter} ${tireLoadIndex}`, margin, y);
+            y += 5;
 
-    if (secondSetCheckbox) {
-        const tireType2 = control.querySelector('.tire-type2').value;
-        const tireWidth2 = control.querySelector('.tire-width2').value;
-        const tireAspectRatio2 = control.querySelector('.tire-aspect-ratio2').value;
-        const tireDiameter2 = control.querySelector('.tire-diameter2').value;
-        const tireLoadIndex2 = control.querySelector('.tire-load-index2').value;
+            if (secondSetCheckbox) {
+                const tireType2 = control.querySelector('.tire-type2').value;
+                const tireWidth2 = control.querySelector('.tire-width2').value;
+                const tireAspectRatio2 = control.querySelector('.tire-aspect-ratio2').value;
+                const tireDiameter2 = control.querySelector('.tire-diameter2').value;
+                const tireLoadIndex2 = control.querySelector('.tire-load-index2').value;
 
-        doc.text(`2ème jeu de pneus: ${tireType2}`, margin, y);
-        y += 5;
-        doc.text(`Dimensions: ${tireWidth2}/${tireAspectRatio2} R${tireDiameter2} ${tireLoadIndex2}`, margin, y);
-        y += 5;
-    }
-}
-
+                doc.text(`2ème jeu de pneus: ${tireType2}`, margin, y);
+                y += 5;
+                doc.text(`Dimensions: ${tireWidth2}/${tireAspectRatio2} R${tireDiameter2} ${tireLoadIndex2}`, margin, y);
+                y += 5;
+            }
+        }
 
         if (description.includes("dernières dates de service entretien")) {
             const serviceDate = control.querySelector('.service-date').value;
@@ -483,14 +482,13 @@ async function generatePDF() {
             const testsGroup = control.querySelector('.tests-group');
             const checkboxes = testsGroup.querySelectorAll('.test-checkbox');
 
-            checkboxes.forEach((checkbox, index) => {
+            checkboxes.forEach((checkbox) => {
                 const testLabel = checkbox.parentElement.textContent.trim();
                 const isChecked = checkbox.checked ? '✔️' : '❌';
                 doc.text(`${testLabel}: ${isChecked}`, margin, y);
                 y += 5;
             });
         }
-    }
 
         for (let photo of photos) {
             if (photo.data) {
@@ -530,7 +528,7 @@ async function generatePDF() {
 
         doc.line(margin, y, pageWidth - margin, y);
         y += 10;
-    }
+    } // Fin de la boucle for (control)
 
     const fileName = `${controlType} ${chassisNumber}.pdf`;
     doc.save(fileName);
