@@ -302,6 +302,7 @@ function validateForm() {
         'registration',
         'mechanic',
         'vehicle',
+        'client',
         'mileage'
     ];
     for (let fieldId of requiredFields) {
@@ -377,6 +378,13 @@ async function generatePDF() {
     const fontSize = 10; // Définir la taille de la police
     doc.setFontSize(fontSize + 10);
 
+    function checkPageHeight(heightToAdd) {
+        if (y + heightToAdd > pageHeight - margin) {
+            doc.addPage();
+            y = margin; // Reset y to the top of the new page
+        }
+    }
+
     // Récupérer les informations supplémentaires
     const controlType = document.getElementById('control-type').value;
     const orderNumber = document.getElementById('order-number').value;
@@ -384,6 +392,7 @@ async function generatePDF() {
     const registration = document.getElementById('registration').value;
     const mechanic = document.getElementById('mechanic').value;
     const vehicle = document.getElementById('vehicle').value;
+    const client = document.getElementById('client').value;
     const mileage = document.getElementById('mileage').value;
     const dateTime = document.getElementById('date-time').value;
 
@@ -396,13 +405,15 @@ async function generatePDF() {
     doc.text(`Type de contrôle: ${controlType}`, xPosition, y + 5);
     doc.setFontSize(fontSize);
 
+    checkPageHeight(20);  // Check space for the next set of information
     doc.text(`N° d'ordre: ${orderNumber}`, margin, y + 15);
     doc.text(`N° Chassis: ${chassisNumber}`, margin + 100, y + 15);
     doc.text(`Immatriculation: ${registration}`, margin, y + 25);
     doc.text(`Mécanicien: ${mechanic}`, margin + 100, y + 25);
     doc.text(`Véhicule: ${vehicle}`, margin, y + 35);
-    doc.text(`Kilomètres: ${mileage}`, margin + 100, y + 35);
-    doc.text(`Date et Heure du contrôle: ${dateTime}`, margin, y + 45);
+    doc.text(`Client: ${client}`, margin + 100, y + 35);
+    doc.text(`Kilomètres: ${mileage}`, margin, y + 45);
+    doc.text(`Date et Heure du contrôle: ${dateTime}`, margin +100, y + 45);
     y += 55;
 
     // Ajouter une ligne de séparation
@@ -412,10 +423,7 @@ async function generatePDF() {
     const controls = document.querySelectorAll('.control-item');
 
     for (let control of controls) {
-        if (y + 20 > pageHeight - margin) {
-            doc.addPage();
-            y = margin;
-        }
+        checkPageHeight(30); // Check height before processing each control
 
         const description = control.querySelector('span').textContent;
         const status = control.getAttribute('data-status') || 'Non défini';
@@ -430,17 +438,20 @@ async function generatePDF() {
 
         // Diviser la description en lignes
         const descriptionLines = doc.splitTextToSize(`Description: ${description}`, maxWidth);
+        checkPageHeight(descriptionLines.length * 10);  // Check height for the description
         doc.text(descriptionLines, margin, y);
         y += 5 + (descriptionLines.length * 8);
 
         doc.setFontSize(fontSize);
         doc.setTextColor(0, 0, 0); // Reset the color to black
 
+        checkPageHeight(10);  // Check space for status
         doc.text(`Statut: ${status}`, margin, y);
         y += 5;
 
         // Ajouter le commentaire avec retour à la ligne automatique
         const commentLines = doc.splitTextToSize(`Commentaire: ${comment}`, maxWidth);
+        checkPageHeight(commentLines.length * 10);  // Check height for the comment
         doc.text(commentLines, margin, y);
         y += 5 + (commentLines.length * 8);
 
@@ -453,6 +464,7 @@ async function generatePDF() {
             const tireLoadIndex = control.querySelector('.tire-load-index').value;
             const secondSetCheckbox = control.querySelector('.second-set-checkbox').checked;
 
+            checkPageHeight(30);  // Check space for tires info
             doc.text(`Type de pneus: ${tireType}`, margin, y);
             y += 5;
             doc.text(`Dimensions: ${tireWidth}/${tireAspectRatio} R${tireDiameter} ${tireLoadIndex}`, margin, y);
@@ -477,6 +489,7 @@ async function generatePDF() {
             const mileage = control.querySelector('.mileage').value;
             const expertiseDate = control.querySelector('.expertise-date').value;
 
+            checkPageHeight(30);  // Check space for service info
             doc.text(`Date du dernier service: ${serviceDate}`, margin, y);
             y += 5;
             doc.text(`Kilomètres du dernier service: ${mileage}`, margin, y);
@@ -517,25 +530,17 @@ async function generatePDF() {
                     width = height * aspectRatio;
                 }
 
-                if (y + height > pageHeight - margin) {
-                    doc.addPage();
-                    y = margin;
-                }
-
+                checkPageHeight(height + 20);  // Check space for the image
                 doc.addImage(photo.data, 'JPEG', margin, y, width, height);
                 y += height + 10;
-
-                if (y + 30 > pageHeight - margin) {
-                    doc.addPage();
-                    y = margin;
-                }
             }
         }
 
+        checkPageHeight(10);
         doc.line(margin, y, pageWidth - margin, y);
         y += 10;
     } // Fin de la boucle for (control)
 
-    const fileName = `${controlType} ${chassisNumber}.pdf`;
+    const fileName = `${controlType} ${client} ${vehicle} ${chassisNumber}.pdf`;
     doc.save(fileName);
 }
