@@ -223,7 +223,7 @@ if (description.includes("dernières dates de service entretien")) {
      // Ajouter un texte juste avant les cases à cocher
     const serviceTestsLabel = document.createElement('p');
     serviceTestsLabel.textContent = '!! Prendre en photo le carnet de service !!';
-    serviceTestsLabel.style.color = 'red'; // S'assurer qu'il est visible
+    serviceTestsLabel.style.cssText = 'color: red; font-weight: bold;';
     controlItem.appendChild(serviceTestsLabel);
     
     // Ajouter les cases à cocher
