@@ -204,9 +204,9 @@ if (description.includes("ceintures de sécurité")) {
 
      // Ajouter un texte juste avant le commentaire
     const siegesTestsLabel = document.createElement('p');
-    serviceTestsLabel.textContent = '!! Controler le nombre de sièges et les appuis-têtes !!';
-    serviceTestsLabel.classList.add('red-text');
-    controlItem.appendChild(serviceTestsLabel);
+    siegesTestsLabel.textContent = '!! Controler le nombre de sièges et les appuis-têtes !!';
+    siegesTestsLabel.classList.add('red-text');
+    controlItem.appendChild(siegesTestsLabel);
     
 }
         
