@@ -507,7 +507,7 @@ async function generatePDF() {
                 //doc.text(`${testLabel}: ${isChecked}`, margin, y);
                 //y += 5;
             //});
-        }
+        //}
 
         for (let photo of photos) {
             if (photo.data) {
