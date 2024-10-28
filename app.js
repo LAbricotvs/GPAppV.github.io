@@ -192,6 +192,19 @@ function addControl(description, allowNotEquipped) {
     // Ajouter des commentaire en rouge
 if (description.includes("dernières dates de service entretien")) {
 
+    const expertiseDateLabel = document.createElement('label');
+    expertiseDateLabel.textContent = 'Date de la dernière expertise:';
+    const expertiseDateInput = document.createElement('input');
+    expertiseDateInput.setAttribute('type', 'date');
+    expertiseDateInput.classList.add('expertise-date');
+
+    controlItem.appendChild(document.createElement('br')); // Ajouter un retour à la ligne
+    controlItem.appendChild(expertiseDateLabel);
+    controlItem.appendChild(expertiseDateInput);
+
+
+    
+
      // Ajouter un texte juste avant le commentaire
     const serviceTestsLabel = document.createElement('p');
     serviceTestsLabel.textContent = '!! Prendre en photo le carnet de service !!';
@@ -440,7 +453,14 @@ async function generatePDF() {
             }
         }
 
+        if (description.includes('dernières dates de service entretien')) {
+            const expertiseDate = control.querySelector('.expertise-date').value;
 
+            doc.text(`Date de la dernière expertise: ${expertiseDate}`, margin, y);
+            y += 5;
+        }
+
+        
         for (let photo of photos) {
             if (photo.data) {
                 const img = await loadImage(photo.data);
