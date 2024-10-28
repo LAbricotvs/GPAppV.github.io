@@ -191,67 +191,67 @@ function addControl(description, allowNotEquipped) {
 
     // Ajouter les champs de saisie pour les dates de service et les kilomètres si la description correspond
 if (description.includes("dernières dates de service entretien")) {
-    const serviceDateLabel = document.createElement('label');
-    serviceDateLabel.textContent = 'Date du dernier service:';
-    const serviceDateInput = document.createElement('input');
-    serviceDateInput.setAttribute('type', 'date');
-    serviceDateInput.classList.add('service-date');
+    // const serviceDateLabel = document.createElement('label');
+    // serviceDateLabel.textContent = 'Date du dernier service:';
+    // const serviceDateInput = document.createElement('input');
+    // serviceDateInput.setAttribute('type', 'date');
+    // serviceDateInput.classList.add('service-date');
 
-    const mileageLabel = document.createElement('label');
-    mileageLabel.textContent = 'Kilomètres du dernier service:';
-    const mileageInput = document.createElement('input');
-    mileageInput.setAttribute('type', 'number');
-    mileageInput.setAttribute('placeholder', 'Kilomètres');
-    mileageInput.classList.add('mileage');
+    // const mileageLabel = document.createElement('label');
+    // mileageLabel.textContent = 'Kilomètres du dernier service:';
+    // const mileageInput = document.createElement('input');
+    //mileageInput.setAttribute('type', 'number');
+    //mileageInput.setAttribute('placeholder', 'Kilomètres');
+    //mileageInput.classList.add('mileage');
 
-    const expertiseDateLabel = document.createElement('label');
-    expertiseDateLabel.textContent = 'Date de la dernière expertise:';
-    const expertiseDateInput = document.createElement('input');
-    expertiseDateInput.setAttribute('type', 'date');
-    expertiseDateInput.classList.add('expertise-date');
+    //const expertiseDateLabel = document.createElement('label');
+    //expertiseDateLabel.textContent = 'Date de la dernière expertise:';
+    //const expertiseDateInput = document.createElement('input');
+    //expertiseDateInput.setAttribute('type', 'date');
+    //expertiseDateInput.classList.add('expertise-date');
 
     // Ajouter un retour à la ligne entre les groupes de champs de saisie
-    controlItem.appendChild(document.createElement('br')); // Ajouter un retour à la ligne
-    controlItem.appendChild(serviceDateLabel);
-    controlItem.appendChild(serviceDateInput);
-    controlItem.appendChild(mileageLabel);
-    controlItem.appendChild(mileageInput);
-    controlItem.appendChild(document.createElement('br')); // Ajouter un retour à la ligne
-    controlItem.appendChild(expertiseDateLabel);
-    controlItem.appendChild(expertiseDateInput);
+    //controlItem.appendChild(document.createElement('br')); // Ajouter un retour à la ligne
+    //controlItem.appendChild(serviceDateLabel);
+    //controlItem.appendChild(serviceDateInput);
+    //controlItem.appendChild(mileageLabel);
+    //controlItem.appendChild(mileageInput);
+    //controlItem.appendChild(document.createElement('br')); // Ajouter un retour à la ligne
+    //controlItem.appendChild(expertiseDateLabel);
+    //controlItem.appendChild(expertiseDateInput);
 
      // Ajouter un texte juste avant les cases à cocher
     const serviceTestsLabel = document.createElement('p');
-    serviceTestsLabel.textContent = 'Effectués au dernier service :';
+    serviceTestsLabel.textContent = '!! Prendre en photo le carnet de service !!';
     serviceTestsLabel.style.color = 'black'; // S'assurer qu'il est visible
     controlItem.appendChild(serviceTestsLabel);
     
     // Ajouter les cases à cocher
-    const testsGroup = document.createElement('div');
-    testsGroup.classList.add('tests-group');
+    //const testsGroup = document.createElement('div');
+    //testsGroup.classList.add('tests-group');
 
-    const tests = [
-        'Vidange',
-        'DSG',
-        'Haldex',
-        'Distrib',
-        'Bougies',
-        'Liquide de frein',
-        'Filtre à carburant'
-    ];
+    //const tests = [
+        //'Vidange',
+        //'DSG',
+        //'Haldex',
+        //'Distrib',
+        //'Bougies',
+        //'Liquide de frein',
+        //'Filtre à carburant'
+    //];
 
-    tests.forEach(test => {
-        const testLabel = document.createElement('label');
-        testLabel.textContent = test;
-        const testCheckbox = document.createElement('input');
-        testCheckbox.setAttribute('type', 'checkbox');
-        testCheckbox.classList.add('test-checkbox');
-        testLabel.insertBefore(testCheckbox, testLabel.firstChild);
-        testsGroup.appendChild(testLabel);
-        testsGroup.appendChild(document.createElement('br'));
-    });
+    //tests.forEach(test => {
+        //const testLabel = document.createElement('label');
+        //testLabel.textContent = test;
+        //const testCheckbox = document.createElement('input');
+        //testCheckbox.setAttribute('type', 'checkbox');
+        //testCheckbox.classList.add('test-checkbox');
+        //testLabel.insertBefore(testCheckbox, testLabel.firstChild);
+        //testsGroup.appendChild(testLabel);
+        //testsGroup.appendChild(document.createElement('br'));
+    //});
 
-    controlItem.appendChild(testsGroup); // Ajouter les cases à cocher au controlItem
+    //controlItem.appendChild(testsGroup); // Ajouter les cases à cocher au controlItem
 }
         
     const commentTextarea = document.createElement('textarea');
