@@ -84,3 +84,8 @@ button.selected {
     min-height: 40px;
     max-height: 200px; /* Hauteur maximale pour éviter des zones trop grandes */
 }
+
+.red-text {
+    color: red;
+    font-weight: bold;
+}
