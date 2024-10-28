@@ -484,30 +484,6 @@ async function generatePDF() {
             }
         }
 
-        //if (description.includes("dernières dates de service entretien")) {
-            //const serviceDate = control.querySelector('.service-date').value;
-            //const mileage = control.querySelector('.mileage').value;
-            //const expertiseDate = control.querySelector('.expertise-date').value;
-
-            //checkPageHeight(30);  // Check space for service info
-            //doc.text(`Date du dernier service: ${serviceDate}`, margin, y);
-            //y += 5;
-            //doc.text(`Kilomètres du dernier service: ${mileage}`, margin, y);
-            //y += 5;
-            //doc.text(`Date de la dernière expertise: ${expertiseDate}`, margin, y);
-            //y += 5;
-
-            // Récupérer l'état des cases à cocher et les ajouter au PDF
-            //const testsGroup = control.querySelector('.tests-group');
-            //const checkboxes = testsGroup.querySelectorAll('.test-checkbox');
-
-            //checkboxes.forEach((checkbox) => {
-                //const testLabel = checkbox.parentElement.textContent.trim();
-                //const isChecked = checkbox.checked ? 'Fait au dernier service' : 'Pas fait au dernier service';
-                //doc.text(`${testLabel}: ${isChecked}`, margin, y);
-                //y += 5;
-            //});
-        //}
 
         for (let photo of photos) {
             if (photo.data) {
