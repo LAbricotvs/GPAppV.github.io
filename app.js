@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { description: "Contrôle des balais essuie-glaces et du lave-glace + lave-phares", allowNotEquipped: false },
         { description: "Contrôle éclairage et klaxon", allowNotEquipped: false },
         { description: "Contrôle des protections de pédales", allowNotEquipped: false },
-        { description: "Contrôle des ceintures de sécurité + sièges !! ATTENTION AU NOMBRE DE SIEGES !!", allowNotEquipped: false },
+        { description: "Contrôle des ceintures de sécurité + sièges ", allowNotEquipped: false },
         { description: "Réglage des phares", allowNotEquipped: false },
         { description: "Contrôle géométrie au ripomètre, contrôle du blocage de direction (antivol)", allowNotEquipped: false },
         { description: "Contrôle du verrouillage centralisé, des télécommandes", allowNotEquipped: false },
@@ -200,10 +200,10 @@ if (description.includes("dernières dates de service entretien")) {
     
 }
 
-if (description.includes("Contrôle des ceintures de sécurité")) {
+if (description.includes("ceintures de sécurité")) {
 
      // Ajouter un texte juste avant le commentaire
-    const serviceTestsLabel = document.createElement('p');
+    const siegesTestsLabel = document.createElement('p');
     serviceTestsLabel.textContent = '!! Controler le nombre de sièges et les appuis-têtes !!';
     serviceTestsLabel.classList.add('red-text');
     controlItem.appendChild(serviceTestsLabel);
